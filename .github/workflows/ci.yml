@@ -6,6 +6,16 @@ on:
 jobs:
   qemu:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - tonistiigi/binfmt:latest
+          - tonistiigi/binfmt:master
+        platforms:
+          - all
+          - arm64,riscv64,arm
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -22,3 +32,6 @@ jobs:
       
       - name: Dump context
         uses: crazy-max/ghaction-dump-context@v1
+
+      - name: uname
+        run: uname -a
