@@ -7,6 +7,17 @@ jobs:
   qemu:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Set up QEMU
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
+        with:
+          image: ${{ matrix.image }}
+          platforms: ${{ matrix.platforms }}
+
+      - name: Available platforms
+        run: echo ${{ steps.qemu.outputs.platforms }}
+      
+      - name: Dump context
+        uses: crazy-max/ghaction-dump-context@v1
