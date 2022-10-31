@@ -11,7 +11,7 @@ jobs:
       matrix:
         image:
           - tonistiigi/binfmt:latest
-          - tonistiigi/binfmt:master
+          # - tonistiigi/binfmt:master
         platforms:
           - all
           - arm64,riscv64,arm
@@ -35,3 +35,6 @@ jobs:
 
       - name: uname
         run: uname -a
+
+      - name: build docker image
+        run: docker build -t ialegor/docker-test .
