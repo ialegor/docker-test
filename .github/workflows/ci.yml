@@ -62,5 +62,5 @@ jobs:
           context: .
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: ialegor/docker-test:develop
+          tags: ghcr.io/ialegor/docker-test:develop
           # labels: ${{ steps.meta.outputs.labels }}
