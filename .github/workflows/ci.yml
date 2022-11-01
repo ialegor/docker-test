@@ -8,7 +8,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  qemu:
+  docker:
     runs-on: ubuntu-latest
     # strategy:
     #   fail-fast: false
@@ -25,11 +25,14 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up QEMU
-        id: qemu
+        # id: qemu
         uses: docker/setup-qemu-action@v2
         # with:
         #   image: ${{ matrix.image }}
         #   platforms: ${{ matrix.platforms }}
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
       # - name: Available platforms
       #   run: echo ${{ steps.qemu.outputs.platforms }}
